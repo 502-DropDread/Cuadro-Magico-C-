@@ -1,0 +1,74 @@
+#include <iostream>
+#include <stdio.h>
+#include <string.h>
+#include <conio>
+#include <windows.h>
+#define r(x,NumM)((x)<0?NumM+(x)%NumM:((x)>=NumM?(x)%NumM:(x)))
+
+void marcoS(){
+//marco superior...
+	gotoxy(2,2); 
+	cout<<"\311\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\
+	315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315
+	\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\31
+	5\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\3
+	15\315\315\315\273 ";
+}
+
+void marcoI(){
+//marco inferior...
+	gotoxy(1,25); cout<<" 
+	\310\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\31
+	5\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\3
+	15\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\
+	315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315\315
+	\315\315\274 ";
+}
+
+void Itro() {
+	gotoxy(30,7); cout<<"\262\262\262\262";
+}
+
+
+main() {
+	system ("COLOR 2");
+	int A[123][123], x, y, n, r, NumM, suma;
+	marcoS();
+	marcoI();
+	Itro();
+
+	gotoxy(30,4); cout<< " -CUADRO MAGICO- " <<endl;
+	gotoxy(5,6); cout<< "*Ingrese un nunero impar: ";
+	gotoxy(31,6); cin>> NumM;
+while (!(NumM % 2));
+	system("color 0E"); 
+	gotoxy(31,10); cout<<"Cuadrado Magico de orden: " << 
+	NumM << "X" << NumM;
+	//cout<<""<<endl;
+for (x = 0; x < NumM; x++){
+	for (y = 0; y < NumM; y++){
+		A[x][y] = 0;
+	} }
+for (x = NumM / 2, y = 0, n = 1; n <= NumM * NumM;)
+	if (!A[x][y]) {
+		A[x][y] = n++, x = r(x + 1, NumM), y = r(y - 1, NumM);
+	}
+
+	else{ x = r(x - 1, NumM), y = r(y + 2, NumM); }
+		for (y = 0; y < NumM; y++) {
+			cout << endl;
+			for (x = 0; x < NumM; x++){
+				Sleep(200); cout<< A[x][y]<<" \26 ";
+				Sleep(100);system("color 7E");
+				Sleep(100);system("color 2A");
+				Sleep(100);system("color 1B"); //cambio de colores
+				Sleep(100);system("color 7C");
+		} }
+
+
+	suma = ((NumM * (NumM * NumM + 1)) / 2);
+	cout<<""<<endl;
+	gotoxy(13,23); cout<<"*********** EL NUMERO MAGICO ES: " << 
+	suma<<" ***********";
+	getch();
+}
